@@ -2,7 +2,7 @@
  * copyright (c) 2023, Arquitectura de Software, Disc, UCN
  */
 
-package cl.ucn.disc.as.Conserjeria.UI;
+package cl.ucn.disc.as.UI;
 
 // Imports
 import com.google.gson.Gson;
@@ -11,16 +11,18 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import io.Javalin.Javalin;
-import io.Javalin.json.jsonMapper;
+import io.javalin.Javalin;
+import io.javalin.json.JsonMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.jetbrains.annotations.notNull;
-import java.io.IOExeption;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.time.Instant;
 
-@slf4j
+@Slf4j
 public final class ApiRestServer{
+
     /**
      * Nothing here
      */
@@ -41,12 +43,12 @@ public final class ApiRestServer{
              * @param out
              * @param instant
              */
-            @override
-            public void write(JsonWriter out, Instant instant) throws IOExeption{
-                if (in.peak()==JsonToken.NULL) {
+            @Override
+            public void write(JsonWriter out, Instant instant) throws IOException{
+                if (instant==null) {
                     out.nullValue();
                 } else {
-                    out.value(instant.ofEpochMilli());
+                    out.value(instant.toEpochMilli());
 
                 }
             }
@@ -57,8 +59,8 @@ public final class ApiRestServer{
              * @param in
              * @return the convert java object
              */
-            @override
-            public Instant read(JsonReader in) throws IOExeption{
+            @Override
+            public Instant read(JsonReader in) throws IOException{
                 if (in.peek() == JsonToken.NULL){
                     in.nextNull();
                     return null;
@@ -72,38 +74,39 @@ public final class ApiRestServer{
                 .registerTypeAdapter(Instant.class, instantTypeAdapter)
                 .create();
     }
-    private static Javalin createAndConfigureGson(){
+    private static Javalin createAndConfigureJavalin(){
         JsonMapper jsonMapper = new JsonMapper(){
             // the gson config
             private static final Gson GSON = createAndConfiguredGson();
             /**
              * json to object
              */
-            @notNull
+            @NotNull
             @Override
-            public <T> T fromJsonString(@notNull String json, @notNull Type targetType){
-                return GSON.fromJson(Json, targetType);
+            public <T> T fromJsonString(@NotNull String json, @NotNull Type targetType){
+                return GSON.fromJson(json, targetType);
             }
             /**
              * json to object
              */
-            @notNull
+            @NotNull
             @Override
-            public String toJsonString(@notNull String json, @notNull Type type){
+            public String toJsonString(@NotNull Object obj, @NotNull Type type){
+
                 return GSON.toJson(obj, type);
             }
         };
 
         //configure the server
         return Javalin.create(config->{
-            config.jsonmapper(jsonMapper);
+            config.jsonMapper(jsonMapper);
 
             config.compression.gzipOnly(9);
 
             config.requestLogger.http((ctx, ms)->{
                 log.debug("servered: {} in {} ms.", ctx.fullUrl(), ms);
             });
-            config.pluggins.enableDevLoggin();
+            //config.pluggins.enableDevLoggin();
         });
     }
     /**
@@ -114,7 +117,7 @@ public final class ApiRestServer{
     public static Javalin start(final Integer port, final RoutesConfigurator routesConfigurator){
         if (port < 1024 || port > 65535){
             log.error("BAD port:" + port);
-            throw new IllegalArgumentExeption("BAD port:"+port);
+            throw new IllegalArgumentException("BAD port:"+port);
         }
         log.debug("Starting api rest server in port {} .."+port);
 
@@ -125,22 +128,22 @@ public final class ApiRestServer{
         routesConfigurator.configure(app);
 
         //the hookup thread
-        RunTime.getRunTime().addShutdownHook(new Thread(app::stop));
+        Runtime.getRuntime().addShutdownHook(new Thread(app::stop));
 
         // hooks to detect to shutdown
         app.events(event->{
             event.serverStarting(()->{
                 log.debug("starting the Javaling server");
             });
-            event.serverStarted((->{
+            event.serverStarted(()->{
                 log.debug("Server started!");
-            }));
-            event.serverStopping((->{
+            });
+            event.serverStopping(()->{
                 log.debug("Server stopping");
-            }));
-            event.serverStopped((->{
+            });
+            event.serverStopped(()->{
                 log.debug("Server Stop!");
-            }));
+            });
         });
 
         //Start

@@ -132,6 +132,7 @@ public final class QDepartamento extends TQRootBean<Departamento,QDepartamento> 
     public Assoc(String name, R root, String prefix) {
       super(name, root, prefix);
     }
+
     public final R filterMany(Consumer<QDepartamento> apply) {
       final ExpressionList list = Expr.factory().expressionList();
       final var qb = new QDepartamento(list);

@@ -140,6 +140,7 @@ public final class QPersona extends TQRootBean<Persona,QPersona> {
     public Assoc(String name, R root, String prefix) {
       super(name, root, prefix);
     }
+
     public final R filterMany(Consumer<QPersona> apply) {
       final ExpressionList list = Expr.factory().expressionList();
       final var qb = new QPersona(list);

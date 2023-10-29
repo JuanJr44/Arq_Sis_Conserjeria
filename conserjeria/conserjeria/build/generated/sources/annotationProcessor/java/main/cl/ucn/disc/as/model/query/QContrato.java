@@ -1,6 +1,9 @@
 package cl.ucn.disc.as.model.query;
 
 import cl.ucn.disc.as.model.Contrato;
+import cl.ucn.disc.as.model.query.QDepartamento;
+import cl.ucn.disc.as.model.query.QPago;
+import cl.ucn.disc.as.model.query.QPersona;
 import io.ebean.Database;
 import io.ebean.Expr;
 import io.ebean.ExpressionList;
@@ -10,7 +13,6 @@ import io.ebean.Transaction;
 import io.ebean.typequery.Generated;
 import io.ebean.typequery.PInstant;
 import io.ebean.typequery.PLong;
-import io.ebean.typequery.PUtilDate;
 import io.ebean.typequery.TQAssocBean;
 import io.ebean.typequery.TQRootBean;
 import io.ebean.typequery.TypeQueryBean;
@@ -39,7 +41,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
   public PLong<QContrato> version;
   public PInstant<QContrato> created;
   public PInstant<QContrato> modified;
-  public PUtilDate<QContrato> fechaPago;
+  public PInstant<QContrato> fechaPago;
+  public QPersona.Assoc<QContrato> persona;
+  public QDepartamento.Assoc<QContrato> departamento;
+  public QPago.Assoc<QContrato> listaPagos;
 
 
   /**
@@ -108,7 +113,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
     public static PLong<QContrato> version = _alias.version;
     public static PInstant<QContrato> created = _alias.created;
     public static PInstant<QContrato> modified = _alias.modified;
-    public static PUtilDate<QContrato> fechaPago = _alias.fechaPago;
+    public static PInstant<QContrato> fechaPago = _alias.fechaPago;
+    public static QPersona.Assoc<QContrato> persona = _alias.persona;
+    public static QDepartamento.Assoc<QContrato> departamento = _alias.departamento;
+    public static QPago.Assoc<QContrato> listaPagos = _alias.listaPagos;
   }
 
   /**  Association query bean */
@@ -119,7 +127,10 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
     public PLong<R> version;
     public PInstant<R> created;
     public PInstant<R> modified;
-    public PUtilDate<R> fechaPago;
+    public PInstant<R> fechaPago;
+    public QPersona.Assoc<R> persona;
+    public QDepartamento.Assoc<R> departamento;
+    public QPago.Assoc<R> listaPagos;
 
     public Assoc(String name, R root) {
       super(name, root);
@@ -128,6 +139,7 @@ public final class QContrato extends TQRootBean<Contrato,QContrato> {
     public Assoc(String name, R root, String prefix) {
       super(name, root, prefix);
     }
+
     public final R filterMany(Consumer<QContrato> apply) {
       final ExpressionList list = Expr.factory().expressionList();
       final var qb = new QContrato(list);

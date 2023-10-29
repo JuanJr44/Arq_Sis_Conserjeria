@@ -1,7 +1,6 @@
 package cl.ucn.disc.as.model.query;
 
-import cl.ucn.disc.as.model.Edificio;
-import cl.ucn.disc.as.model.query.QDepartamento;
+import cl.ucn.disc.as.model.Pago;
 import io.ebean.Database;
 import io.ebean.Expr;
 import io.ebean.ExpressionList;
@@ -10,39 +9,33 @@ import io.ebean.Query;
 import io.ebean.Transaction;
 import io.ebean.typequery.Generated;
 import io.ebean.typequery.PInstant;
-import io.ebean.typequery.PLong;
-import io.ebean.typequery.PString;
+import io.ebean.typequery.PInteger;
 import io.ebean.typequery.TQAssocBean;
 import io.ebean.typequery.TQRootBean;
 import io.ebean.typequery.TypeQueryBean;
 import java.util.function.Consumer;
 
 /**
- * Query bean for Edificio.
+ * Query bean for Pago.
  * 
  * THIS IS A GENERATED OBJECT, DO NOT MODIFY THIS CLASS.
  */
 @Generated("io.ebean.querybean.generator")
 @TypeQueryBean("v1")
-public final class QEdificio extends TQRootBean<Edificio,QEdificio> {
+public final class QPago extends TQRootBean<Pago,QPago> {
 
-  private static final QEdificio _alias = new QEdificio(true);
+  private static final QPago _alias = new QPago(true);
 
   /**
    * Return the shared 'Alias' instance used to provide properties to 
    * <code>select()</code> and <code>fetch()</code> 
    */
-  public static QEdificio alias() {
+  public static QPago alias() {
     return _alias;
   }
 
-  public PLong<QEdificio> id;
-  public PLong<QEdificio> version;
-  public PInstant<QEdificio> created;
-  public PInstant<QEdificio> modified;
-  public PString<QEdificio> nombre;
-  public PString<QEdificio> direccion;
-  public QDepartamento.Assoc<QEdificio> lista;
+  public PInstant<QPago> fechaPago;
+  public PInteger<QPago> monto;
 
 
   /**
@@ -66,38 +59,38 @@ public final class QEdificio extends TQRootBean<Edificio,QEdificio> {
    * 
    * }</pre>
    */
-  public static QEdificio forFetchGroup() {
-    return new QEdificio(FetchGroup.queryFor(Edificio.class));
+  public static QPago forFetchGroup() {
+    return new QPago(FetchGroup.queryFor(Pago.class));
   }
 
   /** Construct using the default Database */
-  public QEdificio() {
-    super(Edificio.class);
+  public QPago() {
+    super(Pago.class);
   }
 
   /** Construct with a given transaction */
-  public QEdificio(Transaction transaction) {
-    super(Edificio.class, transaction);
+  public QPago(Transaction transaction) {
+    super(Pago.class, transaction);
   }
 
   /** Construct with a given Database */
-  public QEdificio(Database database) {
-    super(Edificio.class, database);
+  public QPago(Database database) {
+    super(Pago.class, database);
   }
 
 
   /** Private constructor for Alias */
-  private QEdificio(boolean dummy) {
+  private QPago(boolean dummy) {
     super(dummy);
   }
 
   /** Private constructor for FetchGroup building */
-  private QEdificio(Query<Edificio> fetchGroupQuery) {
+  private QPago(Query<Pago> fetchGroupQuery) {
     super(fetchGroupQuery);
   }
 
   /** Private constructor for filterMany */
-  private QEdificio(ExpressionList<Edificio> filter) {
+  private QPago(ExpressionList<Pago> filter) {
     super(filter);
   }
 
@@ -107,26 +100,16 @@ public final class QEdificio extends TQRootBean<Edificio,QEdificio> {
    */
   @Generated("io.ebean.querybean.generator")
   public static final class Alias {
-    public static PLong<QEdificio> id = _alias.id;
-    public static PLong<QEdificio> version = _alias.version;
-    public static PInstant<QEdificio> created = _alias.created;
-    public static PInstant<QEdificio> modified = _alias.modified;
-    public static PString<QEdificio> nombre = _alias.nombre;
-    public static PString<QEdificio> direccion = _alias.direccion;
-    public static QDepartamento.Assoc<QEdificio> lista = _alias.lista;
+    public static PInstant<QPago> fechaPago = _alias.fechaPago;
+    public static PInteger<QPago> monto = _alias.monto;
   }
 
   /**  Association query bean */
   @Generated("io.ebean.querybean.generator")
   @TypeQueryBean("v1")
-  public static final class Assoc<R> extends TQAssocBean<Edificio,R,QEdificio> {
-    public PLong<R> id;
-    public PLong<R> version;
-    public PInstant<R> created;
-    public PInstant<R> modified;
-    public PString<R> nombre;
-    public PString<R> direccion;
-    public QDepartamento.Assoc<R> lista;
+  public static final class Assoc<R> extends TQAssocBean<Pago,R,QPago> {
+    public PInstant<R> fechaPago;
+    public PInteger<R> monto;
 
     public Assoc(String name, R root) {
       super(name, root);
@@ -136,9 +119,9 @@ public final class QEdificio extends TQRootBean<Edificio,QEdificio> {
       super(name, root, prefix);
     }
 
-    public final R filterMany(Consumer<QEdificio> apply) {
+    public final R filterMany(Consumer<QPago> apply) {
       final ExpressionList list = Expr.factory().expressionList();
-      final var qb = new QEdificio(list);
+      final var qb = new QPago(list);
       apply.accept(qb);
       expr().filterMany(_name).addAll(list);
       return _root;

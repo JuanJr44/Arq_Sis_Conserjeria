@@ -1,0 +1,8 @@
+[
+  {"name": "cl.ucn.disc.as.model.Contrato", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.model.Departamento", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.model.Edificio", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.model.Pago", "allDeclaredConstructors": true, "allDeclaredFields": true},
+  {"name": "cl.ucn.disc.as.model.Persona", "allDeclaredConstructors": true, "allDeclaredFields": true}
+]
+

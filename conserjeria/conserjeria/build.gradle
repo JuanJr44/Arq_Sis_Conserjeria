@@ -43,7 +43,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 
     // lombok
-    testCompileOnly "org.projectlombok:lombok:${lombookVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:${lombokVersion}"
 
     // ebean

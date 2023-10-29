@@ -2,7 +2,7 @@
  * CopyRight (c) 2023. Arquitectura de Software, Disc, UCN
  */
 
-package cl.ucn.disc.as.Conserjeria.UI;
+package cl.ucn.disc.as.UI;
 
 import io.javalin.Javalin;
 

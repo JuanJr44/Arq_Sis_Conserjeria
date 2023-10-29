@@ -7,10 +7,12 @@ import cl.ucn.disc.as.model.Edificio;
 import cl.ucn.disc.as.model.Persona;
 import cl.ucn.disc.as.services.Sistema;
 import cl.ucn.disc.as.services.SistemaImpl;
-import cl.ucn.disc.as.conserjeria.UI.ApiRestServer;
-import cl.ucn.disc.as.conserjeria.UI.WebController;
+import cl.ucn.disc.as.UI.ApiRestServer;
+import cl.ucn.disc.as.UI.RoutesConfigurator;
+import cl.ucn.disc.as.UI.WebController;
 import io.ebean.DB;
 import io.ebean.Database;
+import io.javalin.Javalin;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.DatabaseMetaData;
@@ -34,7 +36,7 @@ public class Main {
 
         log.debug("Starting Main...");
 
-        Javalin app = apiRestServer.start(7070, new webController());
+        Javalin app = ApiRestServer.start(7070, new WebController());
 
         log.debug("Done ... :D");
     }
