@@ -97,10 +97,13 @@ public final class ApiRestServer{
         //configure the server
         return Javalin.create(config->{
             config.jsonmapper(jsonMapper);
+
             config.compression.gzipOnly(9);
+
             config.requestLogger.http((ctx, ms)->{
                 log.debug("servered: {} in {} ms.", ctx.fullUrl(), ms);
             });
+            config.pluggins.enableDevLoggin();
         });
     }
     /**
@@ -108,7 +111,7 @@ public final class ApiRestServer{
      *
      * @param port to use
      */
-    public static void start(final Integer port, final RoutesConfigurator routesConfigurator){
+    public static Javalin start(final Integer port, final RoutesConfigurator routesConfigurator){
         if (port < 1024 || port > 65535){
             log.error("BAD port:" + port);
             throw new IllegalArgumentExeption("BAD port:"+port);
@@ -141,7 +144,7 @@ public final class ApiRestServer{
         });
 
         //Start
-        app.start(port);
+        return app.start(port);
 
     }
 }
