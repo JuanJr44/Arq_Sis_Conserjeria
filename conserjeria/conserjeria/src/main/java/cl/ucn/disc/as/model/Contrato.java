@@ -17,41 +17,39 @@ import java.util.Date;
 @Builder
 @Entity
 public class Contrato extends BaseModel {
-
-    /**
-     *The Contador
-     */
     @NotNull
     private Instant fechaPago;
 
-    /**
-     * the one who had to pay
-     */
+    // Persona que asociada al contrato
     @NotNull
-    @Getter
-    Persona persona;
+    private Persona persona;
 
-    /**
-     * the departem of Persona
-     */
-    @Getter
+    // Departamento el asociado al contrato
     @NotNull
-    Departamento departamento;
+    private Departamento departamento;
 
-    /**
-     * List of Pays
-     */
-    @Getter
-    ArrayList<Pago> listaPagos;
+    // Lista de pagos asociados al contrato
+    private List<Pago> pagos;
 
-    /**
-     *
-     * @param fecha
-     * @return diferences between the days of paid
-     */
-    public long diferenciaDeDias(Instant fecha) {
-        Instant ahora = Instant.now();
-        Duration diferencia = Duration.between(ahora, fecha);
-        return diferencia.toMinutes();
+    public Contrato(Persona persona, Departamento departamento, Instant fechaPago) {
+        this.persona = persona;
+        this.departamento = departamento;
+        this.fechaPago = fechaPago;
+    }
+
+    public Instant getFechaPago() {
+        return fechaPago;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public List<Pago> getPagos() {
+        return pagos;
     }
 }

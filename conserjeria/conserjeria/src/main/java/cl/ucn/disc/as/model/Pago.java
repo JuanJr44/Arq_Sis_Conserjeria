@@ -15,19 +15,23 @@ import java.time.Instant;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Pago {
-
-    /**
-     * The date of pay
-     */
-    @Getter
+public class Pago extends BaseModel{
     @NotNull
-    Instant fechaPago;
+    private Instant fechaPago;
 
-    /**
-     * The amount
-     */
-    @Getter
     @NotNull
-    int monto;
+    private Integer monto;
+
+    public Pago(Instant fechaPago, Integer monto) {
+        this.fechaPago = fechaPago;
+        this.monto = monto;
+    }
+
+    public Instant getFechaPago() {
+        return fechaPago;
+    }
+
+    public Integer getMonto() {
+        return monto;
+    }
 }

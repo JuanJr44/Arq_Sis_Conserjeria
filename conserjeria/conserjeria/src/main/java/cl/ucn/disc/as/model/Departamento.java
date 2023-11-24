@@ -12,15 +12,19 @@ import javax.persistence.Entity;
 @Builder
 @Entity
 public class Departamento extends BaseModel  {
-    /**
-     * The Apartment Number
-     */
-    @NotNull
-    private Integer departamento;
+    private Integer numero;
+    private Integer piso;
 
-    /**
-     * The Piso
-     */
-    @NotNull
-    private String piso;
+    public Departamento(Integer numero, Integer piso) {
+        this.numero = numero;
+        this.piso = piso;
+    }
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public Integer getPiso() {
+        return piso;
+    }
 }
