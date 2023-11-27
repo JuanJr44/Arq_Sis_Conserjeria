@@ -116,11 +116,11 @@ public class SistemaImpl implements Sistema {
     public void populate() {
         {
             Persona persona = Persona.builder()
-                    .rut("20213591-9")
-                    .nombre("NIcolas")
-                    .apellidos("Henriquez")
-                    .email("nhp@gmail.com")
-                    .telefono("1234567890")
+                    .rut("12345678-9")
+                    .nombre("Juan")
+                    .apellidos("Avila Araya")
+                    .email("juan_a@gmail.com")
+                    .telefono("+56912345678")
                     .build();
             this.database.save(persona);
         }

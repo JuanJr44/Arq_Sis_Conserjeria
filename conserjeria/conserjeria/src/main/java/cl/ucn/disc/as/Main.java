@@ -32,12 +32,24 @@ public class Main {
      *
      * @param args to use.
      */
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException, InterruptedException  {
 
-        log.debug("Starting Main...");
+        log.debug("Starting Main ..");
 
+        log.debug("Starting the REST API server ..");
         Javalin app = ApiRestServer.start(7070, new WebController());
 
-        log.debug("Done ... :D");
+        //log.debug("Stopping ..");
+        //app.stop();
+
+        log.debug("Starting the gRPC server ..");
+        Server server = ServerBuilder
+                .forPort(50123)
+                .addService(new PersonaGrpcServiceImpl())
+                .build();
+        server.start();
+        Runtime.getRuntime().addShutdownHook(new Thread(server::shutdown));
+        server.awaitTermination();
+        log.debug("Done.  ;)");
     }
 }
