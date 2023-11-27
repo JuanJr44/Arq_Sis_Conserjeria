@@ -10,6 +10,7 @@ import io.ebean.Transaction;
 import io.ebean.typequery.Generated;
 import io.ebean.typequery.PInstant;
 import io.ebean.typequery.PInteger;
+import io.ebean.typequery.PLong;
 import io.ebean.typequery.TQAssocBean;
 import io.ebean.typequery.TQRootBean;
 import io.ebean.typequery.TypeQueryBean;
@@ -34,6 +35,10 @@ public final class QPago extends TQRootBean<Pago,QPago> {
     return _alias;
   }
 
+  public PLong<QPago> id;
+  public PLong<QPago> version;
+  public PInstant<QPago> created;
+  public PInstant<QPago> modified;
   public PInstant<QPago> fechaPago;
   public PInteger<QPago> monto;
 
@@ -100,6 +105,10 @@ public final class QPago extends TQRootBean<Pago,QPago> {
    */
   @Generated("io.ebean.querybean.generator")
   public static final class Alias {
+    public static PLong<QPago> id = _alias.id;
+    public static PLong<QPago> version = _alias.version;
+    public static PInstant<QPago> created = _alias.created;
+    public static PInstant<QPago> modified = _alias.modified;
     public static PInstant<QPago> fechaPago = _alias.fechaPago;
     public static PInteger<QPago> monto = _alias.monto;
   }
@@ -108,6 +117,10 @@ public final class QPago extends TQRootBean<Pago,QPago> {
   @Generated("io.ebean.querybean.generator")
   @TypeQueryBean("v1")
   public static final class Assoc<R> extends TQAssocBean<Pago,R,QPago> {
+    public PLong<R> id;
+    public PLong<R> version;
+    public PInstant<R> created;
+    public PInstant<R> modified;
     public PInstant<R> fechaPago;
     public PInteger<R> monto;
 

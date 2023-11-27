@@ -11,7 +11,6 @@ import io.ebean.typequery.Generated;
 import io.ebean.typequery.PInstant;
 import io.ebean.typequery.PInteger;
 import io.ebean.typequery.PLong;
-import io.ebean.typequery.PString;
 import io.ebean.typequery.TQAssocBean;
 import io.ebean.typequery.TQRootBean;
 import io.ebean.typequery.TypeQueryBean;
@@ -40,8 +39,8 @@ public final class QDepartamento extends TQRootBean<Departamento,QDepartamento> 
   public PLong<QDepartamento> version;
   public PInstant<QDepartamento> created;
   public PInstant<QDepartamento> modified;
-  public PInteger<QDepartamento> departamento;
-  public PString<QDepartamento> piso;
+  public PInteger<QDepartamento> numero;
+  public PInteger<QDepartamento> piso;
 
 
   /**
@@ -110,8 +109,8 @@ public final class QDepartamento extends TQRootBean<Departamento,QDepartamento> 
     public static PLong<QDepartamento> version = _alias.version;
     public static PInstant<QDepartamento> created = _alias.created;
     public static PInstant<QDepartamento> modified = _alias.modified;
-    public static PInteger<QDepartamento> departamento = _alias.departamento;
-    public static PString<QDepartamento> piso = _alias.piso;
+    public static PInteger<QDepartamento> numero = _alias.numero;
+    public static PInteger<QDepartamento> piso = _alias.piso;
   }
 
   /**  Association query bean */
@@ -122,8 +121,8 @@ public final class QDepartamento extends TQRootBean<Departamento,QDepartamento> 
     public PLong<R> version;
     public PInstant<R> created;
     public PInstant<R> modified;
-    public PInteger<R> departamento;
-    public PString<R> piso;
+    public PInteger<R> numero;
+    public PInteger<R> piso;
 
     public Assoc(String name, R root) {
       super(name, root);
