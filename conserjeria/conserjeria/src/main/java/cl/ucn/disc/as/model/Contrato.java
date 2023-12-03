@@ -9,6 +9,8 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
+
 import java.util.ArrayList;
 import java.util.Date;
 
