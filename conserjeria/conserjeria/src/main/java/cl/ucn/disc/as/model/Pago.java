@@ -12,8 +12,8 @@ import java.time.Instant;
 
 
 @ToString(callSuper = true)
-@AllArgsConstructor
-@Builder
+//@AllArgsConstructor
+//@Builder
 @Entity
 public class Pago extends BaseModel{
     @NotNull

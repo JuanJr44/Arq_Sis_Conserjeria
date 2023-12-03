@@ -4,14 +4,16 @@
 
 package cl.ucn.disc.as.UI;
 
-import cl.ucn.disc.as.gRCP.PersonaGrpc;
-import cl.ucn.disc.as.gRCP.PersonaGrpcRequest;
-import cl.ucn.disc.as.gRCP.PersonaGrpcResponse;
-import cl.ucn.disc.as.gRCP.PersonaGrpcServiceGrpc;
+import cl.ucn.disc.as.grpc.PersonaGrpc;
+import cl.ucn.disc.as.grpc.PersonaGrpcRequest;
+import cl.ucn.disc.as.grpc.PersonaGrpcResponse;
+import cl.ucn.disc.as.grpc.PersonaGrpcServiceGrpc;
 import cl.ucn.disc.as.model.Persona;
 import cl.ucn.disc.as.services.Sistema;
 import cl.ucn.disc.as.services.SistemaImpl;
 import io.ebean.DB;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.javalin.Javalin;
 import io.javalin.http.NotFoundResponse;
 

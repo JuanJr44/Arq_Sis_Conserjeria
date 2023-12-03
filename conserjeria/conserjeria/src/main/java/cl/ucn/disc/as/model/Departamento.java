@@ -8,8 +8,8 @@ import lombok.ToString;
 import javax.persistence.Entity;
 
 @ToString
-@AllArgsConstructor
-@Builder
+//@AllArgsConstructor
+//@Builder
 @Entity
 public class Departamento extends BaseModel  {
     private Integer numero;

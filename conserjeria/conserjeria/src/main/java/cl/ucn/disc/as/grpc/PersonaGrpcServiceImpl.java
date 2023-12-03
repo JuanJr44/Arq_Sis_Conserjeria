@@ -1,16 +1,16 @@
-package cl.ucn.disc.as.gRPC;
+package cl.ucn.disc.as.grpc;
 
 import cl.ucn.disc.as.grpc.PersonaGrpcServiceGrpc;
 import cl.ucn.disc.as.services.Sistema;
-import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
-
+import io.grpc.stub.StreamObserver;
 import java.util.Optional;
 
 /**
  * The Persona gRPC Service class.
  * @author Juan
  */
+
 @Slf4j
 public final class PersonaGrpcServiceImpl extends PersonaGrpcServiceGrpc.PersonaGrpcServiceImplBase {
     /**
@@ -24,14 +24,15 @@ public final class PersonaGrpcServiceImpl extends PersonaGrpcServiceGrpc.Persona
         PersonaGrpc personaGrpc = PersonaGrpc.newBuilder()
                 .setRut(request.getRut())
                 .setNombre("Juan")
-                .setApellidos("Avila Araya")
-                .setEmail("juan_a@ucn.cl")
+                .setApellidos("Avila")
+                .setEmail("Juan_a@ucn.cl")
                 .setTelefono("+56912345678")
                 .build();
-
         responseObserver.onNext(PersonaGrpcResponse.newBuilder()
                 .setPersona(personaGrpc)
                 .build());
         responseObserver.onCompleted();
     }
 }
+
+
