@@ -11,7 +11,7 @@
 If you want to clone this repository run the next code 
 
 ```bash
-git@github.com:JuanJr44/Arq_Sis_Conserjeria.git
+git clone  https://github.com/JuanJr44/Arq_Sis_Conserjeria
 ```
 
 ### Docker
