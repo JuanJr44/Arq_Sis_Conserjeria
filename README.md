@@ -52,7 +52,7 @@ To check the sistem works this are important notes:
 
 
 
-## MarioDB
+## MariaDB
 
 To check the sistem works this are important notes:
 > ports for this sistem is 7071 and you can change it if you want
