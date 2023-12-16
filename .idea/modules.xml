@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Arq_Sis_Conserjeria.iml" filepath="$PROJECT_DIR$/.idea/Arq_Sis_Conserjeria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/conserjeria.main.iml" filepath="$PROJECT_DIR$/.idea/modules/conserjeria.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/conserjeria/conserjeria/src/main/gRCP/gRCP.iml" filepath="$PROJECT_DIR$/conserjeria/conserjeria/src/main/gRCP/gRCP.iml" />
     </modules>
   </component>
